@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-key="title">💰 Safe Investment</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    h2 {
+      color: #27ae60;
+      margin-top: 0;
+    }
+    .plan {
+      background: #e6f4ea;
+      border: 2px solid #27ae60;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    form input, form select, form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #219150;
+    }
+    .wallet-address {
+      background: #ecf0f1;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      word-wrap: break-word;
+    }
+    .support a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    .bottom-nav {
+      display: flex;
+      border-top: 1px solid #ccc;
+      background: white;
+    }
+    .bottom-nav button {
+      flex: 1;
+      padding: 12px 0;
+      border: none;
+      background: none;
+      font-size: 14px;
+      color: #555;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .bottom-nav button.active {
+      color: #27ae60;
+      font-weight: bold;
+      border-top: 3px solid #27ae60;
+      background: #e8f8f5;
+    }
+    .language-switcher {
+      text-align: right;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="language-switcher">
+    🌐 <span data-key="language">Language:</span>
+    <select id="langSelect">
+      <option value="en">English</option>
+      <option value="fa">فارسی</option>
+    </select>
+  </div>
+
+  <div class="content">
+    <div id="sec-invest" class="section active">
+      <h2 data-key="investmentTitle">Investment</h2>
+      <form id="frm">
+        <label data-key="yourName">Your Name:</label>
+        <input type="text" id="username" required />
+        <label data-key="yourEmail">Your Email:</label>
+        <input type="email" id="email" required />
+        <label data-key="plan">Plan:</label>
+        <select id="plan" required>
+          <option value="" disabled selected data-key="selectPlan">Select a plan</option>
+          <option value="vip1">VIP 1 ($10–45)</option>
+          <option value="vip2">VIP 2 ($45–100)</option>
+          <option value="vip3">VIP 3 ($100–180)</option>
+        </select>
+        <button type="submit" data-key="registerBtn">Register & Show Wallet Address</button>
+      </form>
+      <div id="wallet" class="wallet-address" style="display:none;" data-key="walletText">
+        BEP20 Wallet Address:<br>
+        0xe2B3F0969f1dADdA511d2346bB3e552aA9542aa7
+      </div>
+    </div>
+
+    <div id="sec-info" class="section">
+      <h2 data-key="infoTitle">Investment Info</h2>
+      <div class="plan" data-key="vip1">🔹 VIP 1: 15% daily ($10–45)</div>
+      <div class="plan" data-key="vip2">🔹 VIP 2: 19% daily ($45–100)</div>
+      <div class="plan" data-key="vip3">🔹 VIP 3: 25% daily ($100–180)</div>
+      <p data-key="infoNote">After investing, daily profit is calculated and sent via our notification channel.</p>
+    </div>
+
+    <div id="sec-support" class="section">
+      <h2 data-key="supportTitle">Support</h2>
+      <p data-key="supportPhone">📞 24/7 Support:</p>
+      <p data-key="supportNote">If you have any questions or issues, please contact the admin:</p>
+      <p><a href="https://t.me/Death_of_liffe" target="_blank">@Death_of_liffe</a></p>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button id="nav-invest" class="active" data-key="tabInvest">Investment</button>
+    <button id="nav-info" data-key="tabInfo">Investment Info</button>
+    <button id="nav-support" data-key="tabSupport">Support</button>
+  </nav>
+
+  <script>
+    const translations = {
+      en: {
+        title: "💰 Safe Investment",
+        language: "Language:",
+        investmentTitle: "Investment",
+        yourName: "Your Name:",
+        yourEmail: "Your Email:",
+        plan: "Plan:",
+        selectPlan: "Select a plan",
+        registerBtn: "Register & Show Wallet Address",
+        walletText: "BEP20 Wallet Address:<br>0xe2B3F0969f1dADdA511d2346bB3e552aA9542aa7",
+        infoTitle: "Investment Info",
+        vip1: "🔹 VIP 1: 15% daily ($10–45)",
+        vip2: "🔹 VIP 2: 19% daily ($45–100)",
+        vip3: "🔹 VIP 3: 25% daily ($100–180)",
+        infoNote: "After investing, daily profit is calculated and sent via our notification channel.",
+        supportTitle: "Support",
+        supportPhone: "📞 24/7 Support:",
+        supportNote: "If you have any questions or issues, please contact the admin:",
+        tabInvest: "Investment",
+        tabInfo: "Investment Info",
+        tabSupport: "Support"
+      },
+      fa: {
+        title: "💰 سرمایه‌گذاری امن",
+        language: "زبان:",
+        investmentTitle: "سرمایه‌گذاری",
+        yourName: "نام شما:",
+        yourEmail: "ایمیل شما:",
+        plan: "پلن:",
+        selectPlan: "انتخاب کنید",
+        registerBtn: "ثبت‌نام و نمایش آدرس کیف پول",
+        walletText: "آدرس کیف پول BEP20:<br>0xe2B3F0969f1dADdA511d2346bB3e552aA9542aa7",
+        infoTitle: "اطلاعات سرمایه‌گذاری",
+        vip1: "🔹 VIP 1: روزانه ۱۵٪ (۱۰ تا ۴۵ دلار)",
+        vip2: "🔹 VIP 2: روزانه ۱۹٪ (۴۵ تا ۱۰۰ دلار)",
+        vip3: "🔹 VIP 3: روزانه ۲۵٪ (۱۰۰ تا ۱۸۰ دلار)",
+        infoNote: "پس از سرمایه‌گذاری، سود روزانه محاسبه و از طریق کانال اطلاع‌رسانی ارسال می‌شود.",
+        supportTitle: "پشتیبانی",
+        supportPhone: "📞 پشتیبانی ۲۴ ساعته:",
+        supportNote: "در صورت سوال یا مشکل، با ادمین تماس بگیرید:",
+        tabInvest: "سرمایه‌گذاری",
+        tabInfo: "اطلاعات سرمایه‌گذاری",
+        tabSupport: "پشتیبانی"
+      }
+    };
+
+    function setLanguage(lang) {
+      localStorage.setItem("siteLang", lang);
+      document.documentElement.lang = lang;
+      document.body.style.direction = lang === "fa" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.getElementById("langSelect").value = lang;
+    }
+
+    document.getElementById("langSelect").addEventListener("change", e => {
+      setLanguage(e.target.value);
+    });
+
+    const savedLang = localStorage.getItem("siteLang");
+    const browserLang = navigator.language.startsWith("fa") ? "fa" : "en";
+    const langToUse = savedLang || browserLang;
+    setLanguage(langToUse);
+
+    // Navigation logic
+    const sections = {
+      invest: document.getElementById('sec-invest'),
+      info: document.getElementById('sec-info'),
+      support: document.getElementById('sec-support')
+    };
+    const navButtons = {
+      invest: document.getElementById('nav-invest'),
+      info: document.getElementById('nav-info'),
+      support: document.getElementById('nav-support')
+    };
+
+    Object.keys(navButtons).forEach(key => {
+      navButtons[key].addEventListener('click', () => {
+        Object.values(navButtons).forEach(btn => btn.classList.remove('active'));
+        Object.values(sections).forEach(sec => sec.classList.remove('active'));
+        navButtons[key].classList.add('active');
+        sections[key].classList.add('active');
+      });
+    });
+
+    document.getElementById('frm').addEventListener('submit', e => {
+      e.preventDefault();
+      const frm = document.getElementById("frm");
+      if (!frm.username.value || !frm.email.value || !frm.plan.value) {
+        alert(langToUse === "fa" ? "لطفاً تمام فیلدها را پر کنید." : "Please fill in all fields.");
+        return;
+      }
+      frm.style.display = 'none';
+      document.getElementById('wallet').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
